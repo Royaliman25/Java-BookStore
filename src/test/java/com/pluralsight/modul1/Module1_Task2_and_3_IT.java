@@ -1,3 +1,18 @@
+package com.pluralsight.module1;
+import com.pluralsight.*;
+
+import static org.junit.Assert.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
+
 
 
 @RunWith(PowerMockRunner.class)
