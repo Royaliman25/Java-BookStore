@@ -57,8 +57,28 @@ public class Module2_Task3_thru_6_IT extends Mockito{
      } catch (Exception e) {}
   }
 
+@Test
+    public void _task3() throws Exception {
+       boolean called_getParameter = false;
+       boolean called_getBook = false;
 
-   
+       try {
+          verify(request, atLeast(1)).getParameter("id");
+          called_getParameter = true;
+       } catch (Throwable e) {}
+
+       try {
+          verify(mockBookDAO).getBook(anyInt());
+          called_getBook = true;
+       } catch (Throwable e) {}
+
+       String errorMsg = "In ControllerServlet showEditForm()," +
+                         " did not call getParameter(\"id\").";
+       assertTrue(errorMsg, called_getParameter);
+       errorMsg = "In ControllerServlet showEditForm()," +
+                         " did not call getBook(id).";
+       assertTrue(errorMsg, called_getBook);
+    }   
    @Test
     public void _task4() throws Exception {
        boolean called_getRequestDispatcher = false;
