@@ -122,4 +122,13 @@ public class Module3_Task1_thru_5_IT {
     }
 
 
+    /* Verify updateBook() 
+     method exists in BookDAO*/
+    //task 1
+    @Test
+    public void _task1() throws Exception {
+      /*doesn't exist in BookDAO.java*/
+      message = "The method updateBook() doesn't exist in BookDAO.java.";
+      assertNotNull(message, method);
+    }
 
