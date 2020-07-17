@@ -39,7 +39,12 @@ public class Module1_Task2_and_3_IT {
                 "deleteBook", HttpServletRequest.class, HttpServletResponse.class);
     } catch (Exception e) {}
 }
-
+// Verify the deleteBook() method exists in ControllerServlet
+    @Test
+    public void _task2() throws Exception {
+      String errorMsg = "private void deleteBook() does not exist in ControllerServlet";
+      assertNotNull(errorMsg, method);
+    }
   @Test
     public void _task3() throws Exception {
        String tempID = "0";
