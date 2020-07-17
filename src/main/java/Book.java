@@ -48,3 +48,37 @@ public class Book {
 		this.price = price;
 	}
 }
+
+
+package com.pluralsight;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DBConnection {
+  private Connection jdbcConnection;
+
+  public DBConnection() {
+    connect();
+  }
+
+  public Connection getConnection() {
+    return jdbcConnection;
+  }
+
+  public void connect()  {
+    try {
+      Class.forName("org.sqlite.JDBC");
+      jdbcConnection = DriverManager.getConnection("jdbc:sqlite:book_store.db");
+      System.out.println("Opened database successfully");
+
+      createTableIfNotExists();
+    } catch ( Exception e ) {
+     System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+     System.exit(0);
+   }
+ }
