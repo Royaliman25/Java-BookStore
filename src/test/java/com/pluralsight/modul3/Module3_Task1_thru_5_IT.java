@@ -161,9 +161,23 @@ public class Module3_Task1_thru_5_IT {
       message = "The method updateBook() doesn't call setString() for the author.";
       assertTrue(message, called_setAuthor);
     }
-
-
     
+    @Test
+    public void _task4() throws Exception {
+      try {
+        Mockito.verify(mockStatement).setFloat(3, 1.50f);
+        called_setPrice = true;
+        Mockito.verify(mockStatement).setInt(4, 1);
+        called_setId = true;
+      } catch (Throwable e) {}
+
+      message = "The method updateBook() doesn't call setFloat() for the price.";
+      assertTrue(message, called_setPrice);
+
+      message = "The method updateBook() doesn't call setInt() for the id.";
+      assertTrue(message, called_setId);
+    }
+    @Test
     //Task 5   
  public void _task5() throws Exception {
       try {
