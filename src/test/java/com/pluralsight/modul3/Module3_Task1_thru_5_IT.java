@@ -132,3 +132,24 @@ public class Module3_Task1_thru_5_IT {
       assertNotNull(message, method);
     }
 
+    
+    //task 3
+@Test
+    public void _task3() throws Exception {
+      try {
+        Mockito.verify(mockStatement).setString(1, "1984");
+        //call title
+        called_setTitle = true;
+        Mockito.verify(mockStatement).setString(2, "George Orwell");
+        //called author
+        called_setAuthor = true;
+      } catch (Throwable e) {}
+      // The method updateBook() doesn't call setString() for the title
+      message = "The method updateBook() doesn't call setString() for the title.";
+      assertTrue(message, called_setTitle);
+      // The method updateBook() doesn't call setString() for the author
+      message = "The method updateBook() doesn't call setString() for the author.";
+      assertTrue(message, called_setAuthor);
+    }
+
+
