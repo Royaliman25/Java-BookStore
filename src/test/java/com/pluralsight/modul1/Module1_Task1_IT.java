@@ -39,9 +39,19 @@ public class Module1_Task1_IT {
       url_contains_id("Delete");
       url_contains_id("Edit");
     }
+    public void url_contains_id(String textStr) {
+        // First check if an anchor with text "Edit" exists
+        HtmlAnchor anchor = null;
+        try {
+          anchor = page.getAnchorByText(textStr);
+        }
+        catch (  ElementNotFoundException e) {}
 
-  
-  
+        assertNotNull("An anchor with the text " + textStr + " does not exist.", anchor);
+
+        boolean found = findURLWithID(textStr.toLowerCase());
+        assertTrue("The " + textStr + " anchor's href does not contain the id.", found);
+    } 
   private boolean findURLWithID(String urlStr) {
       String foundURL = "";
       try {
