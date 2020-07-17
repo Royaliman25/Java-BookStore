@@ -46,3 +46,53 @@ import java.lang.reflect.Method;
 //import java input output
 import java.io.*;
 
+// PowerMockRunner
+@RunWith(PowerMockRunner.class)
+
+// DriverManager
+@PrepareForTest({DriverManager.class, PreparedStatement.class, BookDAO.class})
+
+// Module3_Task1_thru_5_IT 
+public class Module3_Task1_thru_5_IT {
+
+    static Method method = null;
+    static String sql = "UPDATE book SET title = ?, author = ?, price = ?" +
+               " WHERE id = ?";
+    
+    // spyConnection
+    Connection spyConnection;
+    
+    //PreparedStatement
+    PreparedStatement mockStatement;
+
+    //static BookDAO
+    static BookDAO bookDAO;
+
+    //static spyBookDAO
+    static BookDAO spyBookDAO;
+
+    //static called_prepareStatement 
+    static boolean called_prepareStatement = false;
+
+    //static called_setTitle 
+    static boolean called_setTitle = false;
+
+    //static called_setAuthor 
+    static boolean called_setAuthor = false;
+
+    //static called_setPrice 
+    static boolean called_setPrice = false;
+
+    //static called_setId 
+    static boolean called_setId = false;
+
+    //static called_executeUpdate 
+    static boolean called_executeUpdate = false;
+
+    //static called_close 
+    static boolean called_close = false;
+
+    //static message
+    static String message = "";
+
+
