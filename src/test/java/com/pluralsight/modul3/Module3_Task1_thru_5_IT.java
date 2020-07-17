@@ -132,7 +132,17 @@ public class Module3_Task1_thru_5_IT {
       assertNotNull(message, method);
     }
 
-    
+    @Test
+    public void _task2() throws Exception {
+      try {
+        Mockito.verify(spyConnection).prepareStatement(sql);
+        called_prepareStatement = true;
+      } catch (Throwable e) {}
+
+      message = "The method updateBook() doesn't call prepareStatement() correctly.";
+      assertTrue(message, called_prepareStatement);
+    }
+
     //task 3
 @Test
     public void _task3() throws Exception {
