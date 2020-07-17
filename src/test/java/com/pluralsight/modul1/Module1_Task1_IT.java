@@ -40,4 +40,28 @@ public class Module1_Task1_IT {
       url_contains_id("Edit");
     }
 
+  
+  
+  private boolean findURLWithID(String urlStr) {
+      String foundURL = "";
+      try {
+        for (  HtmlAnchor a : page.getAnchors()) {
+          String href = a.getHrefAttribute();
+          if (href.contains(urlStr)) {
+            foundURL = a.getHrefAttribute().toString();
+            break;
+          }
+        }
+      }
+      catch (  ElementNotFoundException e) {
+        return false;
+      }
+      foundURL = foundURL.replaceAll("\\s+","");
+      // Might have different id's in the database so remove them.
+      foundURL = foundURL.replaceAll("[0-9]","");
+      String testingURL = urlStr+"?id=";
+      return foundURL.equals(testingURL);
+    }
+}
+
 
