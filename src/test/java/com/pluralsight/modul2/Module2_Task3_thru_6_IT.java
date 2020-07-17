@@ -57,3 +57,18 @@ public class Module2_Task3_thru_6_IT extends Mockito{
      } catch (Exception e) {}
   }
 
+
+   
+   @Test
+    public void _task4() throws Exception {
+       boolean called_getRequestDispatcher = false;
+
+       try {
+          verify(request).getRequestDispatcher("/BookForm.jsp");
+          called_getRequestDispatcher = true;
+       } catch (Throwable e) {}
+
+       String errorMsg = "In ControllerServlet showEditForm()," +
+            " did not call request.getRequestDispatcher(\"BookForm.jsp\").";
+       assertTrue(errorMsg, called_getRequestDispatcher);
+    }
