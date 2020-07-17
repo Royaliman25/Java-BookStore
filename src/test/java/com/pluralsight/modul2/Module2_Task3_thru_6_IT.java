@@ -105,4 +105,19 @@ public class Module2_Task3_thru_6_IT extends Mockito{
                          " did not call request.setAttribute(\"book\", bookObject);.";
        assertTrue(errorMsg, called_setAttribute);
     }
+@Test
+    public void _task6() throws Exception {
+       boolean called_forward = false;
+
+       try {
+          verify(mockRequestDispatcher).forward(request, response);
+          called_forward = true;
+       } catch (Throwable e) {}
+
+       String errorMsg = "In ControllerServlet showEditForm()," +
+                         " did not call dispatcher.forward(request, response);.";
+       assertTrue(errorMsg, called_forward);
+    }
+
+}
 
