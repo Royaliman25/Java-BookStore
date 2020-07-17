@@ -153,3 +153,30 @@ public class Module3_Task1_thru_5_IT {
     }
 
 
+    
+    //Task 5   
+ public void _task5() throws Exception {
+      try {
+        //executeUpdate
+        Mockito.verify(mockStatement).executeUpdate();
+        //call executeUpdate
+        called_executeUpdate = true;
+        
+        Mockito.verify(mockStatement).close();
+        //close
+        called_close = true;
+      } catch (Throwable e) {}
+
+      // doesn't call executeUpdate
+      message = "The method updateBook() doesn't call executeUpdate().";
+      
+      assertTrue(message, called_executeUpdate);
+      
+      //doesn't call PreparedStatement 
+      message = "The method updateBook() doesn't call PreparedStatement close().";
+
+      assertTrue(message, called_close);
+    }
+
+}
+
