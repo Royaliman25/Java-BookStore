@@ -96,3 +96,30 @@ public class Module3_Task1_thru_5_IT {
     static String message = "";
 
 
+    
+
+    @Before
+    /*String errorMsg = "private void setUp () 
+        does not exist in ControllerServlet";
+        assertNotNull(errorMsg, deleteMethod);*/
+
+    public void setUp() {
+      spyConnection = Mockito.mock(Connection.class);
+      mockStatement = Mockito.mock(PreparedStatement.class);
+      bookDAO = new BookDAO(spyConnection);
+      spyBookDAO = Mockito.spy(bookDAO);
+      
+      //new book
+      Book tempBookObject = new Book(1, "1984", "George Orwell", 1.50f);
+      //Update Book
+      try {
+         Mockito.when(spyConnection.prepareStatement(sql)).thenReturn(mockStatement);
+         method =  BookDAO.class.getMethod("updateBook", Book.class);
+         method.invoke(spyBookDAO, tempBookObject);
+      } catch (Exception e) {
+         //e.printStackTrace();
+      }
+    }
+
+
+
