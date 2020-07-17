@@ -92,3 +92,17 @@ public class Module2_Task3_thru_6_IT extends Mockito{
             " did not call request.getRequestDispatcher(\"BookForm.jsp\").";
        assertTrue(errorMsg, called_getRequestDispatcher);
     }
+   @Test
+    public void _task5() throws Exception {
+       boolean called_setAttribute = false;
+
+       try {
+          verify(request).setAttribute("book", mockBook);
+          called_setAttribute = true;
+       } catch (Throwable e) {}
+
+       String errorMsg = "In ControllerServlet showEditForm()," +
+                         " did not call request.setAttribute(\"book\", bookObject);.";
+       assertTrue(errorMsg, called_setAttribute);
+    }
+
