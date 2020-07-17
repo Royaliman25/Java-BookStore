@@ -45,6 +45,37 @@ public class Module2_Task1_and_2_IT extends Mockito {
       String errorMsg = "private void showEditForm() does not exist in ControllerServlet";
       assertNotNull(errorMsg, method);
     }
+@Test
+        public void _task2() throws Exception {
+             String errorMsg = "private void showEditForm() does not exist in ControllerServlet";
+             assertNotNull(errorMsg, method);
+
+             String tempID = "0";
+             ControllerServlet controllerServlet = PowerMockito.spy(new ControllerServlet());
+             boolean called_showEditForm = false;
+             HttpServletRequest request = mock(HttpServletRequest.class);
+             HttpServletResponse response = mock(HttpServletResponse.class);
+
+             try {
+                 when(request.getPathInfo()).thenReturn("/edit");
+                 //PowerMockito.doNothing().when(controllerServlet, "showEditForm", request, response);
+                 when(request.getParameter("id")).thenReturn(tempID);
+             } catch (MethodNotFoundException e) {}
+
+             try {
+                controllerServlet.doGet(request, response);
+                try {
+                     PowerMockito.verifyPrivate(controllerServlet)
+                                             .invoke("showEditForm", request, response);
+                     called_showEditForm = true;
+                } catch (Throwable e) {}
+             } catch (Exception e) {}
+
+             errorMsg = "After action \"" + "/edit" +
+                                                 "\", did not call showEditForm().";
+             assertTrue(errorMsg, called_showEditForm);
+        }
+
 
 
 }
